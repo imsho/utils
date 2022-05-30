@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>转换Url为钉钉tab打开</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{ title }}</h2>
+      <p>
+        <textarea cols="90" rows="4" v-model="sourceUrl"></textarea>
+        <br />
+        <button @click="onClick">点击转换</button>
+      </p>
+      <p>
+        <fieldset>
+          <legend>转换结果:</legend>
+          <a :href="result">{{ result }}</a>
+        </fieldset>
+      </p>
+    </div>
+
+    <script type="module">
+      import { createApp } from 'vue';
+
+      createApp({
+        data() {
+          return {
+            title: '转换Url为钉钉tab打开',
+            sourceUrl: '',
+            result: '',
+          };
+        },
+        methods: {
+          onClick() {
+            if(!this.sourceUrl) return;
+            this.result = `dingtalk://dingtalkclient/page/link?url=${encodeURIComponent(
+              this.sourceUrl,
+            )}%3Fddtab%3Dtrue`;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
