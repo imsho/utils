@@ -5,13 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>转换Url为钉钉tab打开</title>
-    <script type="importmap">
-      {
-        "imports": {
-          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
-        }
-      }
-    </script>
+    <script src="https://unpkg.com/vue@3"></script>
     <style>
       body {
         font-size: 14px;
@@ -35,9 +29,8 @@
       </p>
     </div>
 
-    <script type="module">
-      import { createApp } from 'vue';
-
+    <script>
+      const { createApp } = Vue
       createApp({
         data() {
           return {
