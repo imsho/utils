@@ -5,21 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
     <style>
       body {
         margin: 0;
         padding: 0;
       }
       .timer-container {
-        background-color: #ffa;
         margin: 0px;
-        border: 1px solid #0f0;
         width: 100wh;
         height: 100vh;
+        font-size: 30vh;
+        line-height: 50vh;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div class="timer-container">2022-6-8</div>
+    <div id="app">
+      <div class="timer-container">{{now}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return {
+            now: '2022-1-1 00:00:00',
+          };
+        },
+        methods: {
+          getNow() {
+            this.now = this.now = new Date(Date.now()).toLocaleString();
+          },
+        },
+        mounted() {
+          this.getNow();
+          setInterval(() => {
+            this.getNow();
+          }, 1000);
+        },
+      }).mount('#app');
+    </script>
   </body>
 </html>
